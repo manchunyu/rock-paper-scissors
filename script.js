@@ -1,4 +1,5 @@
 const CHOICE = ['rock', 'paper', 'scissors'];
+const ANTICHOICE = ['paper', 'scissors', 'rock'];
 
 let humanScore = 0,
     computerScore = 0;
@@ -21,4 +22,24 @@ function getHumanChoice() {
     }   
 }
 
-console.log(getHumanChoice());
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log('Draw!');
+        return;
+    }
+
+    for (let i = 0; i < CHOICE.length; i++) {
+        if (humanChoice === CHOICE[i] && computerChoice === ANTICHOICE[i]) {
+            console.log(`You lose, ${computerChoice} beats ${humanChoice}!`);
+            computerScore++;
+            return;
+        }
+    }
+    console.log(`You win, ${humanChoice} beats ${computerChoice}!`);
+    humanScore++;
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
