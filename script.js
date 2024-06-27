@@ -1,5 +1,9 @@
 const CHOICE = ['rock', 'paper', 'scissors'];
 
+let humanScore = 0,
+    computerScore = 0;
+
+
 function getComputerChoice () {
     let randInt = Math.floor(Math.random() * 3);
     return CHOICE[randInt];
@@ -14,7 +18,7 @@ function getHumanChoice() {
                 return humanChoice;
             } 
         } 
-    }
+    }   
 }
 
 console.log(getHumanChoice());
