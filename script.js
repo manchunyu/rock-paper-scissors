@@ -4,10 +4,12 @@ const ANTICHOICE = ['paper', 'scissors', 'rock'];
 let humanScore = 0,
     computerScore = 0;
 
+
 function getComputerChoice () {
     let randInt = Math.floor(Math.random() * 3);
     return CHOICE[randInt];
 }
+
 
 function getHumanChoice() {
     while (true) {
@@ -21,6 +23,7 @@ function getHumanChoice() {
         } 
     }   
 }
+
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
@@ -40,7 +43,6 @@ function playRound(humanChoice, computerChoice) {
 }
 
 
-
 function playGame() {
     const ROUNDS = 5;
 
@@ -50,5 +52,6 @@ function playGame() {
         playRound(humanSelection, computerSelection);
     }
 }
+
 
 playGame();
