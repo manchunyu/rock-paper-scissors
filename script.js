@@ -1,9 +1,6 @@
 const CHOICE = ['rock', 'paper', 'scissors'];
 const ANTICHOICE = ['paper', 'scissors', 'rock'];
 
-let humanScore = 0,
-    computerScore = 0;
-
 
 function getComputerChoice () {
     let randInt = Math.floor(Math.random() * 3);
@@ -12,7 +9,9 @@ function getComputerChoice () {
 
 
 function getHumanChoice() {
+
     while (true) {
+        
         let humanInput = prompt('Choice?');
         let humanChoice = humanInput.toLowerCase().trim();
 
@@ -25,26 +24,33 @@ function getHumanChoice() {
 }
 
 
-function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) {
-        console.log('Draw!');
-        return;
-    }
 
-    for (let i = 0; i < CHOICE.length; i++) {
-        if (humanChoice === CHOICE[i] && computerChoice === ANTICHOICE[i]) {
-            console.log(`You lose, ${computerChoice} beats ${humanChoice}!`);
-            computerScore++;
-            return;
-        }
-    }
-    console.log(`You win, ${humanChoice} beats ${computerChoice}!`);
-    humanScore++;
-}
 
 
 function playGame() {
     const ROUNDS = 5;
+
+    let humanScore = 0,
+        computerScore = 0;
+
+
+    function playRound(humanChoice, computerChoice) {
+
+        if (humanChoice === computerChoice) {
+            console.log('Draw!');
+            return;
+        }
+    
+        for (let i = 0; i < CHOICE.length; i++) {
+            if (humanChoice === CHOICE[i] && computerChoice === ANTICHOICE[i]) {
+                console.log(`You lose, ${computerChoice} beats ${humanChoice}!`);
+                return computerScore++;
+            }
+        }
+
+        console.log(`You win, ${humanChoice} beats ${computerChoice}!`);
+        return humanScore++;
+    }
 
     for (let i = 0; i < ROUNDS; i++){
         const humanSelection = getHumanChoice();
