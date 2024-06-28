@@ -28,9 +28,6 @@ function getHumanChoice() {
 }
 
 
-
-
-
 function playGame() {
 
     // No. of rounds
