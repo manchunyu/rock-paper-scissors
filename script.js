@@ -1,6 +1,6 @@
-// List of choices
+// Array of choices
 const CHOICE = ['rock', 'paper', 'scissors'];
-// List of choices that counter CHOICE at exact index
+// Array of choices that counter CHOICE at corresponding indices
 const ANTICHOICE = ['paper', 'scissors', 'rock'];
 
 
