@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Rock-Paper-Scissors</title>
 </head>
 <body>
     <h1>Rock-Paper-Scissors</h1>
-    <h2>Make a choice:</h2>
+        
+    <div id="scoreboard">
+        <label for="humanscore">Your Score:</label>
+        <p id="humanscore">0</p>
+        <label for="computerscore">Computer's Score:</label>
+        <p id="computerscore">0</p>
+    </div>
+    <div>
+        <p id="result"></p>
+    </div>
+    <h3>Make a choice:</h2>
     <div id="choice">
         <button value="rock">Rock</button>
         <button value="paper">Paper</button>

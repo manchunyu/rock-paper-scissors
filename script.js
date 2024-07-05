@@ -1,69 +1,51 @@
 // Array of choices
-const CHOICE = ['rock', 'paper', 'scissors'];
-// Array of choices that counter CHOICE at corresponding indices
-const ANTICHOICE = ['paper', 'scissors', 'rock'];
+const CHOICES = ['rock', 'paper', 'scissors'];
+// Array of choices that counter CHOICES at corresponding indices
+const ANTICHOICES = ['paper', 'scissors', 'rock'];
+const WINNINGPOINTS = 5;
+const humanScore = document.getElementById('humanscore');
+const computerScore = document.getElementById('computerscore');
+
+
+document.getElementById('choice').addEventListener('click', event => {
+    
+
+    playerSelection = event.target.value;
+    computerSelection = getComputerChoice();
+
+    playRound(playerSelection, computerSelection);
+    
+    if (+humanScore.textContent === WINNINGPOINTS) {
+        document.getElementById('result').textContent = 'You win!';
+    } else if (+computerScore.textContent === WINNINGPOINTS) {
+        document.getElementById('result').textContent = 'You lost!';
+    }
+});
 
 
 function getComputerChoice () {
-    let randInt = Math.floor(Math.random() * CHOICE.length);
-    return CHOICE[randInt];
+    let randInt = Math.floor(Math.random() * CHOICES.length);
+    return CHOICES[randInt];
 }
 
+function playRound(humanChoice, computerChoice) {
+    let msg = '';
 
-function getHumanChoice() {
-
-    // Loop if choice is invalid
-    while (true) {
-        
-        let humanInput = prompt('Rock/ Paper/ Scissors?');
-        let humanChoice = humanInput.toLowerCase().trim();
-
-        // Check invalid input
-        for (let i = 0; i < CHOICE.length; i++) {
-            if (humanChoice === CHOICE[i]) {
-                return humanChoice;
-            } 
-        } 
-    }   
-}
-
-
-function playGame() {
-
-    // No. of rounds
-    const ROUNDS = 5;
-
-    // Initialize scores
-    let humanScore = 0,
-        computerScore = 0;
-
-
-    function playRound(humanChoice, computerChoice) {
-
-        // Check draw
-        if (humanChoice === computerChoice) {
-            console.log('Draw!');
-            return;
-        }
-        // Check lose
-        for (let i = 0; i < CHOICE.length; i++) {
-            if (humanChoice === CHOICE[i] && computerChoice === ANTICHOICE[i]) {
-                console.log(`You lose, ${computerChoice} beats ${humanChoice}!`);
-                return computerScore++;
-            }
-        }
-        // Else win
-        console.log(`You win, ${humanChoice} beats ${computerChoice}!`);
-        return humanScore++;
+    // Check draw
+    if (humanChoice === computerChoice) {
+        result.textContent = 'Draw!';
+        return;
     }
-
-    // Play 5 rounds
-    for (let i = 0; i < ROUNDS; i++){
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
+    // Check lose
+    for (let i = 0; i < CHOICES.length; i++) {
+        if (humanChoice === CHOICES[i] && computerChoice === ANTICHOICES[i]) {
+            msg = `You lose, ${computerChoice} beats ${humanChoice}!`;
+            result.textContent = msg;
+            return +computerScore.textContent++;
+        }
     }
-}
-
-
-playGame();
+    // Else win
+    msg = `You win, ${humanChoice} beats ${computerChoice}!`;
+    result.textContent = msg;
+    return +humanScore.textContent++;
+}  
