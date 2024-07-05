@@ -5,22 +5,25 @@ const ANTICHOICES = ['paper', 'scissors', 'rock'];
 const WINNINGPOINTS = 5;
 const humanScore = document.getElementById('humanscore');
 const computerScore = document.getElementById('computerscore');
+const choiceBox = document.getElementById('choice');
 
-
-document.getElementById('choice').addEventListener('click', event => {
+let playGame = event => {
     
-
-    playerSelection = event.target.value;
-    computerSelection = getComputerChoice();
+    const playerSelection = event.target.value;
+    const computerSelection = getComputerChoice();
 
     playRound(playerSelection, computerSelection);
     
     if (+humanScore.textContent === WINNINGPOINTS) {
         document.getElementById('result').textContent = 'You win!';
+        choiceBox.removeEventListener('click', playGame);
     } else if (+computerScore.textContent === WINNINGPOINTS) {
-        document.getElementById('result').textContent = 'You lost!';
+        document.getElementById('result').textContent = 'Computer wins!';
+        choiceBox.removeEventListener('click', playGame);
     }
-});
+}
+
+choiceBox.addEventListener('click', playGame);
 
 
 function getComputerChoice () {
